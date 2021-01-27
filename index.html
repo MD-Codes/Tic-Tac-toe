@@ -1,0 +1,84 @@
+	<style>
+		#game{
+		  min-width:300px;
+		  border:1px solid black;
+		  background-color:lightgray;
+		  margin-right;auto;
+		  margin-left:auto;
+		  text-align:center;
+		}
+		h1 {
+		  font-size:1.3em;
+		}
+		#screen div, p {
+		  display:inline;
+		 
+		}
+		#screen p {
+		  font-size:2em;
+		}
+		#choice div{
+		 
+		  display:inline;
+			
+		}
+	</style>
+
+	<script>
+		var choice = { 
+					paper:"74296b_702a6fddf9b6492b9d5db9af2325f742~mv2",
+					scissors:"74296b_14040967d675444383a61f258c1e4b99~mv2",
+					rock:"74296b_f50dbc0dc44547b9a565d29587a0998a~mv2"};
+		//var choice1, compChoice;
+		var win = {
+				scissors:"paper",	
+				paper:"rock",
+				rock:"scissors"
+				}
+			var loser = {
+				paper:"scissors",
+				rock:"paper",
+				scissors:"rock"
+			}
+			
+			function mychoice(choice1){
+			  var choiceNo = Math.floor(Math.random() * (3 - 0) );
+			  var rps = ["paper", "scissors", "rock"];
+			  var compChoice = rps[choiceNo];
+			  document.getElementById('test').innerHTML = compChoice;
+			  ourePhoto(choice1, compChoice); // function change photo in the view
+			
+			if (win[choice1] == compChoice) {
+				return document.getElementById('winner').innerHTML = "Congratulations YOU WIN !!! ";
+			}else if (loser[choice1] == compChoice) {
+			  return document.getElementById('winner').innerHTML = "You Lose!!! Try Again.";
+			}else if (loser[choice1] != compChoice || win[choice1] !=  compChoice){
+			   return document.getElementById('winner').innerHTML = "There is a tie. Try Again.";
+			}
+			}
+		
+		function ourePhoto(choice1, compChoice){
+			var photo1 = document.getElementsByClassName('photo');
+				
+			photo1[0].src = "https://static.wixstatic.com/media/" + choice[choice1] + ".jpg";
+			photo1[1].src = "https://static.wixstatic.com/media/" + choice[	compChoice] + ".jpg";
+			}
+		
+	</script>
+</head>
+
+<div id="game">
+<h1>Rock Paper Scissors</h1>
+<div id="winner"></div>
+<div id="screen">
+	<div><img src="https://static.wixstatic.com/media/74296b_f50dbc0dc44547b9a565d29587a0998a~mv2.jpg" alt="mychoice" class="photo"/></div>
+	<div><p> V/S</p></div>
+	<div><img src="https://static.wixstatic.com/media/74296b_702a6fddf9b6492b9d5db9af2325f742~mv2.jpg" alt="computerchoice" class="photo" /></div>
+</div>
+<div id="choice">
+  <div><button onclick="mychoice(this.value)" value='paper'><img src="img/paper.jpg" alt="paper" /></button></div>
+  <div><button onclick="mychoice(this.value)" value='scissors'><img src="img/scissors.jpg" alt="scissors"/></div>
+  <div><button onclick="mychoice(this.value)" value='rock'><img src="img/rock.jpg" alt="rock"/></div>
+</div>
+</div>
+
